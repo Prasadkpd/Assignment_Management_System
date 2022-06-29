@@ -1,4 +1,5 @@
-import mongoose, {Schema} from "mongoose";
+const mongoose = require("mongoose");
+const Schema =  mongoose.Schema;
 
 const AssignmentSchema = new Schema({
     course: {
@@ -14,5 +15,4 @@ const AssignmentSchema = new Schema({
     collation: 'assignment'
 });
 
-const Assignment = mongoose.model('Assignment', AssignmentSchema);
-export default Assignment;
+module.exports = mongoose.model('Assignment', AssignmentSchema);

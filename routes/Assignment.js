@@ -1,5 +1,5 @@
-import express from 'express';
-import Assignment from "../model/Assignment";
+const express =  require('express');
+const Assignment = require("../model/Assignment");
 
 const assignmentRoutes = express.Router();
 
@@ -31,4 +31,4 @@ assignmentRoutes.route('/delete/:id').get(function (req, res) {
     });
 });
 
-export default assignmentRoutes;
+module.exports = assignmentRoutes;

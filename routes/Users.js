@@ -1,8 +1,8 @@
-import express from 'express';
-import cors from 'cors';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
-import User from '../model/User';
+const express = require("express");
+const cors = require("cors")
+const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
+const User =require( '../model/User');
 
 const users = express.Router();
 users.use(cors());
@@ -71,7 +71,7 @@ users.post('/login', (req, res) => {
 })
 
 users.get('./profile', (req, res) => {
- var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+ let decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
     User.findOne({
         _id: decoded._id
@@ -88,4 +88,4 @@ users.get('./profile', (req, res) => {
         })
 })
 
-export default users;
+module.exports = users;
