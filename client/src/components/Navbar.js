@@ -1,13 +1,12 @@
 import React from 'react';
-import {Link, withRouter, useHistory} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 const Navbar = () => {
-    const history = useHistory();
 
     const logout = (e, props) => {
         e.preventDefault();
         localStorage.removeItem('usertoken');
-        history.push({pathname: "/"})
+        props.history.push({pathname: "/"})
     }
 
     const loginRegLink = () => {

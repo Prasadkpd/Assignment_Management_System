@@ -13,6 +13,7 @@ const App = () => {
       <Router>
         <div className="App">
             <Navbar/>
+            <Landing/>
             {/*<Router exact path="/register" component={Register}/>*/}
             {/*<Router exact path="/login" component={Login}/>*/}
             {/*<Router exact path="/profile" component={Profile}/>*/}
