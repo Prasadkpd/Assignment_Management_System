@@ -54,9 +54,6 @@ const Navbar = () => {
             </ul>
         )
     }
-    const hello = () => {
-       return <h1>Hello</h1>
-    }
 
     const navBarRender = () => {
       if (localStorage.userToken){
