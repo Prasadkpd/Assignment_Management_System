@@ -69,3 +69,23 @@ users.post('/login', (req, res) => {
             res.send("error" + err);
         })
 })
+
+users.get('./profile', (req, res) => {
+ var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    User.findOne({
+        _id: decoded._id
+    })
+        .then(user =>{
+            if (user){
+                res.json(user);
+            } else {
+                res.send("User does not exist");
+            }
+        })
+        .catch(err => {
+            res.send("error" + err);
+        })
+})
+
+export default users;
