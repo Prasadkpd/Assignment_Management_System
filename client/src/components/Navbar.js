@@ -1,13 +1,14 @@
 import React from 'react';
-import {Link, withRouter} from "react-router-dom";
+import {Link, withRouter, useHistory} from "react-router-dom";
 
 const Navbar = () => {
+    const history = useHistory();
 
-    // const logout = (e, props) => {
-    //     e.preventDefault();
-    //     localStorage.removeItem('usertoken');
-    //     props.history.push('/')
-    // }
+    const logout = (e, props) => {
+        e.preventDefault();
+        localStorage.removeItem('usertoken');
+        history.push({pathname: "/"})
+    }
 
     const loginRegLink = () => {
         return (
@@ -47,7 +48,7 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li className="nav-items">
-                    <a href="">
+                    <a href="" onClick={logout()}>
                         <h1><img src="https://img.icons8.com/color/48/000000/exit.png"/>Logout</h1>
                     </a>
                 </li>
@@ -56,29 +57,33 @@ const Navbar = () => {
     }
 
     const navBarRender = () => {
-      if (localStorage.userToken){
-          {userLink()}
-      } else {
-          {loginRegLink()}
-      }
+        if (localStorage.userToken) {
+            {
+                userLink()
+            }
+        } else {
+            {
+                loginRegLink()
+            }
+        }
     }
     return (
         <nav className="navbar navbar-expand-lg navbar-light rounded">
             <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbar1"
-            aria-controls="navbar1"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar1"
+                aria-controls="navbar1"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
 
             <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
                 <ul className="nav nav-tabs">
                     <li className="nav-item">
-                        <Link to="/" className = "nav-link">
+                        <Link to="/" className="nav-link">
                             <h1><img src="https://img.icons8.com/color/48/000000/home--v1.png"/>Home</h1>
                         </Link>
                     </li>
