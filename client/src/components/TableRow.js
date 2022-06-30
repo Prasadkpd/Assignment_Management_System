@@ -1,10 +1,29 @@
 import React from 'react';
 
-const TableRow = () => {
-    return (
-        <div>
+type tableRowProps = {
+    course: String,
+    assignment_name: String,
+    deadline: String
+}
+const TableRow: React.FC<tableRowProps> = (props: tableRowProps) => {
 
-        </div>
+    const {course, assignment_name, deadline} = props;
+
+    return (
+        <tr>
+            <td>
+                {course}
+            </td>
+            <td>
+                {assignment_name}
+            </td>
+            <td>
+                {deadline}
+            </td>
+            <td>
+                <button className='btn btn-primary'>Edit</button>
+            </td>
+        </tr>
     );
 };
 
