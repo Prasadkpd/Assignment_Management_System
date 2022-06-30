@@ -11,8 +11,6 @@ const AssignmentSchema = new Schema({
     deadline: {
         type: String
     }
-},{
-    collation: 'assignment'
 });
 
 module.exports = mongoose.model('Assignment', AssignmentSchema);

@@ -7,7 +7,7 @@ assignmentRoutes.route('/add').post(function (req,res) {
     let assignment = new Assignment(req.body);
     assignment.save()
         .then(assignment=> {
-            res.stat(200).json({'assignment':'assignment added successfully'});
+            res.status(200).json({'assignment':'assignment added successfully'});
         })
         .catch(err=> {
             res.status(400).send("Unable to save")

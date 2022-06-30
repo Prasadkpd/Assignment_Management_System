@@ -27,6 +27,7 @@ users.post('/register', (req, res) => {
                     User.create(userData)
                         .then(user => {
                             res.json({status: user.email + "registered"})
+                            console.log("Registered")
                         })
                         .catch(err => {
                             res.send("error" + err);
@@ -34,6 +35,7 @@ users.post('/register', (req, res) => {
                 })
             } else {
                 res.json({error: "User already registered"})
+                console.log("User already registered")
             }
         })
         .catch(err => {

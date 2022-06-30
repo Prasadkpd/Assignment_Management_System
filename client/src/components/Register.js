@@ -1,20 +1,20 @@
 import React, {useState} from 'react';
 import {register} from "./UserFunctions";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Register = () => {
 
     const initialState = {
-        first_name:'',
-        last_name:'',
+        first_name: '',
+        last_name: '',
         email: '',
         password: ''
     }
 
     const [registerState, setRegisterState] = useState(initialState);
-    const history = useHistory();
+    const navigate = useNavigate();
     const handleOnChange = (e) => {
-        setRegisterState({[e.target.name]: e.target.value});
+        setRegisterState({...registerState, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = (e) => {
@@ -28,7 +28,7 @@ const Register = () => {
 
         register(user).then(res => {
             if (res) {
-                history.push({pathname: "/login"})
+                navigate("/login")
             }
         })
     }
@@ -47,7 +47,7 @@ const Register = () => {
                                         className="form-control"
                                         name="first_name"
                                         placeholder="Enter First Name"
-                                        value={registerState.email}
+                                        value={registerState.first_name}
                                         onChange={handleOnChange}
                                     />
                                 </div>
@@ -58,7 +58,7 @@ const Register = () => {
                                         className="form-control"
                                         name="last_name"
                                         placeholder="Enter Last Name"
-                                        value={registerState.email}
+                                        value={registerState.last_name}
                                         onChange={handleOnChange}
                                     />
                                 </div>
@@ -84,7 +84,7 @@ const Register = () => {
                                         onChange={handleOnChange}
                                     />
                                 </div>
-                                <button className="btn btn-lg btn-primary btn-block">Register</button>
+                                <button type='submit' className="btn btn-lg btn-primary btn-block">Register</button>
                             </h1>
                         </form>
                     </div>

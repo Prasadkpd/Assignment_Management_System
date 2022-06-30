@@ -1,13 +1,33 @@
-import React from 'react';
-import {Link, withRouter} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {Link, useHistory} from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
 
-    const logout = (e, props) => {
-        e.preventDefault();
+    const navigate = useNavigate()
+    const [authState, setAuthState] = useState(false);
+
+    const logout = (e) => {
+        console.log("Button Clicked")
+        console.log(localStorage);
         localStorage.removeItem('usertoken');
-        props.history.push({pathname: "/"})
+        console.log("After");
+        console.log(localStorage);
+        navigate("/", {replace:true})
     }
+
+    useEffect(() => {
+        return () => {
+            if (localStorage.getItem('usertoken') !== null){
+                setAuthState(true);
+            }
+            else {
+                setAuthState(false);
+            }
+        };
+    }, [localStorage.getItem('usertoken')]);
+
 
     const loginRegLink = () => {
         return (
@@ -47,25 +67,15 @@ const Navbar = () => {
                     </a>
                 </li>
                 <li className="nav-items">
-                    <a onClick={logout()}>
+                    <button onClick={()=> logout()} className="nav-link">
                         <h1><img src="https://img.icons8.com/color/48/000000/exit.png"/>Logout</h1>
-                    </a>
+                    </button>
                 </li>
             </ul>
         )
     }
 
-    const navBarRender = () => {
-        if (localStorage.userToken) {
-            {
-                userLink()
-            }
-        } else {
-            {
-                loginRegLink()
-            }
-        }
-    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light rounded">
             <button
@@ -87,11 +97,11 @@ const Navbar = () => {
                         </a>
                     </li>
                 </ul>
-                {localStorage.userToken ? userLink() : loginRegLink()}
+                {authState ?  userLink(): loginRegLink()}
             </div>
         </nav>
 
     );
 };
 
-export default withRouter(Navbar);
+export default Navbar;

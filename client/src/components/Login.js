@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {login} from "./UserFunctions";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+
 
 const Login = () => {
 
@@ -10,9 +11,10 @@ const Login = () => {
     }
 
     const [loginState, setLoginState] = useState(initialState);
-    const history = useHistory();
+    const navigate = useNavigate();
     const handleOnChange = (e) => {
-        setLoginState({[e.target.name]: e.target.value});
+        console.log(loginState);
+        setLoginState({...loginState, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = (e) => {
@@ -24,10 +26,11 @@ const Login = () => {
 
         login(user).then(res => {
             if (res) {
-                history.push({pathname: "/profile"})
+                navigate("/profile")
             }
         })
     }
+
     return (
         <div className="container">
             <h2>
@@ -58,7 +61,7 @@ const Login = () => {
                                         onChange={handleOnChange}
                                     />
                                 </div>
-                                <button className="btn btn-lg btn-primary btn-block">Sign In</button>
+                                <button type="submit" className="btn btn-lg btn-primary btn-block">Sign In</button >
                             </h1>
                         </form>
                     </div>
