@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import AssignmentList from "./components/AssignmentList";
+import FileUpload from "./components/FileUpload";
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/profile" element={<Profile/>}/>
+                <Route path="/uploads" element={<FileUpload/>}/>
                 <Route path="/assignments" element={<AssignmentList/>}/>
             </Routes>
         </Router>

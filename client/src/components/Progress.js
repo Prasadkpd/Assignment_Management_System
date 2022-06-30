@@ -1,9 +1,16 @@
 import React from 'react';
 
-const Progress = () => {
-    return (
-        <div>
+type progressProps = {
+    percentage: String
+}
 
+const Progress: React.FC <progressProps> = (props: progressProps) => {
+
+    const {percentage} = props;
+
+    return (
+        <div className="progress-bar progress=bar-striped bg-success mt-5" role="progressbar" style={{width:`${percentage}%`}}>
+            {percentage}%
         </div>
     );
 };

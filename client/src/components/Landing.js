@@ -4,7 +4,7 @@ const Landing = () => {
     return (
         <div className='container'>
             <div className='jumbotron mt-5'>
-                <div align="center" className="col-sm-8 mx-auto">
+                <div align="center" className="col-sm-12 mx-auto">
                     <h1>Student and Instructor Management System</h1>
                 </div>
                 <br/>
