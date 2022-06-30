@@ -1,5 +1,6 @@
 import React from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch, withRouter} from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
@@ -9,19 +10,27 @@ import FileUpload from "./components/FileUpload";
 import AssignmentList from "./components/AssignmentList";
 
 const App = () => {
-  return(
-      <Router>
-        <div className="App">
-            <Navbar/>
-            <Landing/>
-            {/*<Router exact path="/register" component={Register}/>*/}
-            {/*<Router exact path="/login" component={Login}/>*/}
-            {/*<Router exact path="/profile" component={Profile}/>*/}
-            {/*<Router exact path="/uploads" component={FileUpload}/>*/}
-            {/*<Router exact path="/assignments" component={AssignmentList}/>*/}
-        </div>
-      </Router>
-  )
+    return (
+        <Router >
+            <div className="App">
+                <Navbar/>
+                <Switch>
+                    <Route exact path="/" >
+                        <Landing/>
+                    </Route>
+                    <Route exact path="/register">
+                        <Register/>
+                    </Route>
+                    <Route exact path="/login" >
+                        <Login/>
+                    </Route>
+                    {/*<Router exact path="/profile" component={Profile}/>*/}
+                    {/*<Router exact path="/uploads" component={FileUpload}/>*/}
+                    {/*<Router exact path="/assignments" component={AssignmentList}/>*/}
+                </Switch>
+            </div>
+        </Router>
+    )
 }
 
 export default App;

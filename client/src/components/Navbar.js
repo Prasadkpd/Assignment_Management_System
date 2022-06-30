@@ -13,16 +13,16 @@ const Navbar = () => {
         return (
             <ul className="nav nav-tabs">
                 <li className="nav-item">
-                    <Link to="/login" className="nav-links">
+                    <a href="/login" className="nav-links">
                         <h1><img src="https://img.icons8.com/cute-clipart/64/000000/login-rounded-right.png"/>Login</h1>
-                    </Link>
+                    </a>
                 </li>
                 <li>
-                    <Link to="/register" className="nav-links">
+                    <a href="/register" className="nav-links">
                         <h1><img
                             src="https://img.icons8.com/external-filled-outline-geotatah/64/000000/external-register-training-management-system-filled-outline-filled-outline-geotatah.png"/>Register
                         </h1>
-                    </Link>
+                    </a>
                 </li>
             </ul>
         )
@@ -31,23 +31,23 @@ const Navbar = () => {
     const userLink = () => {
         return (<ul className="nav nav-tabs">
                 <li className="nav-items">
-                    <Link to="/profile" className="nav-link">
+                    <a href="/profile" className="nav-link">
                         <h1><img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-4--v1.png"/>Profile
                         </h1>
-                    </Link>
+                    </a>
                 </li>
                 <li className="nav-items">
-                    <Link to="/uploads" className="nav-link">
+                    <a href="/uploads" className="nav-link">
                         <h1><img src="https://img.icons8.com/color/48/000000/add-rule.png"/>Assignment Submission</h1>
-                    </Link>
+                    </a>
                 </li>
                 <li className="nav-items">
-                    <Link to="/assignments" className="nav-link">
+                    <a href="/assignments" className="nav-link">
                         <h1><img src="https://img.icons8.com/color/48/000000/list.png"/>Assignment List</h1>
-                    </Link>
+                    </a>
                 </li>
                 <li className="nav-items">
-                    <a href="" onClick={logout()}>
+                    <a onClick={logout()}>
                         <h1><img src="https://img.icons8.com/color/48/000000/exit.png"/>Logout</h1>
                     </a>
                 </li>
@@ -82,9 +82,9 @@ const Navbar = () => {
             <div className="collapse navbar-collapse justify-content-md-center" id="navbar1">
                 <ul className="nav nav-tabs">
                     <li className="nav-item">
-                        <Link to="/" className="nav-link">
+                        <a href="/" className="nav-link">
                             <h1><img src="https://img.icons8.com/color/48/000000/home--v1.png"/>Home</h1>
-                        </Link>
+                        </a>
                     </li>
                 </ul>
                 {localStorage.userToken ? userLink() : loginRegLink()}
