@@ -1,9 +1,69 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {login} from "./UserFunctions";
+import {useHistory} from "react-router-dom";
 
 const Login = () => {
-    return (
-        <div>
 
+    const initialState = {
+        email: '',
+        password: ''
+    }
+
+    const [loginState, setLoginState] = useState(initialState);
+    const history = useHistory();
+    const handleOnChange = (e) => {
+        setLoginState({[e.target.name]: e.target.value});
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const user = {
+            email: loginState.email,
+            password: loginState.password
+        }
+
+        login(user).then(res => {
+            if (res) {
+                history.push({pathname: "/profile"})
+            }
+        })
+    }
+    return (
+        <div className="container">
+            <h2>
+                <div className="row">
+                    <div className="col-md-6 mt-5 mx-auto">
+                        <form noValidate onSubmit={handleSubmit}>
+                            <h1 className="h3 mb-3 font-weight-normal">
+                                <p align="center">Student Login</p>
+                                <div className="form-group">
+                                    <label htmlFor="email">Email Address</label>
+                                    <input
+                                        type="email"
+                                        className="form-control"
+                                        name="email"
+                                        placeholder="Enter Email"
+                                        value={loginState.email}
+                                        onChange={handleOnChange}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="email">Password</label>
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        name="password"
+                                        placeholder="Enter Password"
+                                        value={loginState.password}
+                                        onChange={handleOnChange}
+                                    />
+                                </div>
+                                <button className="btn btn-lg btn-primary btn-block">Sign In</button>
+                            </h1>
+                        </form>
+                    </div>
+                </div>
+            </h2>
         </div>
     );
 };
